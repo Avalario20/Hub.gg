@@ -1,7 +1,9 @@
-RewriteEngine On
-RewriteBase /FrontEnd
+Options -MultiViews
 
-# Protéger le dossier BackEnd des rééécritures
+RewriteEngine On
+RewriteBase /
+
+# Protéger le dossier BackEnd
 
 RewriteRule ^BackEnd/ - [L]
 
@@ -12,4 +14,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Réécrire tout vers FrontEnd/index.html
 
-RewriteRule ^(.\*)$ FrontEnd/index.html [QSA,L]
+RewriteRule . FrontEnd/index.html [L]
