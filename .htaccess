@@ -1,4 +1,15 @@
 RewriteEngine On
+RewriteBase /FrontEnd
+
+# Protéger le dossier BackEnd des rééécritures
+
+RewriteRule ^BackEnd/ - [L]
+
+# Ne pas réécrire les fichiers et dossiers existants
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [L]
+
+# Réécrire tout vers FrontEnd/index.html
+
+RewriteRule ^(.\*)$ FrontEnd/index.html [QSA,L]

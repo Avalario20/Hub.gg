@@ -1,25 +1,31 @@
 import { AccueilPage } from "./pages/accueil.js";
-import { TournoisPage } from "./pages/tournois.js";
+import { TournamentsPage } from "./pages/tournois.js";
 import { ReservationPage } from "./pages/reservation.js";
 import { ContactPage } from "./pages/contact.js";
 
+import { BASE_URL } from "./config.js";
+
 const routes = {
   "/": AccueilPage,
-  "/tournois": TournoisPage,
+  "/tournois": TournamentsPage,
   "/reservation": ReservationPage,
   "/contact": ContactPage,
 };
 
+export async function router() {
+  const app = document.querySelector("#app");
+
+  let path = window.location.pathname.replace(BASE_URL, "");
+
+  if (path === "") path = "/";
+
+  const page = routes[path] || AccueilPage;
+
+  app.innerHTML = "";
+  app.appendChild(await page());
+}
+
 export function navigate(path) {
   history.pushState({}, "", path);
   router();
-}
-
-export function router() {
-  const path = window.location.pathname;
-  const page = routes[path] || AccueilPage;
-
-  const app = document.querySelector("#app");
-  app.innerHTML = "";
-  app.appendChild(page());
 }

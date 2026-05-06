@@ -5,15 +5,23 @@
   --textcolor: #acacac;
 }
 body {
-  background-color: var(--backgroundcolor);
+  /* background-color: var(--backgroundcolor); */
   color: var(--textcolor);
   font-family: "jersey 25", sans-serif;
+  min-height: 200vh;
+  background:
+    radial-gradient(circle at top right, #8e56ff, transparent 35%),
+    radial-gradient(circle at bottom left, #06b6d4, transparent 20%), #131313;
 }
 header {
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-right: 25px;
   padding: 0px 200px;
+  top: 0;
+  z-index: 1000;
 }
 #logo {
   width: 180px;
