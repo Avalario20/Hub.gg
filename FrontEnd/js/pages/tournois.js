@@ -12,12 +12,13 @@ export async function TournamentsPage() {
       ${tournaments
         .map(
           (tournament) => `
-          <article class="glass-card">
-            <img src="${tournament.image}" alt="${tournament.title}" style="max-width: 500px; height: auto;">
-            <h2>${tournament.title}</h2>
-            <p>${tournament.game}</p>
-            <p>${tournament.tournament_date}</p>
-            <p>${tournament.location}</p>
+          <article class="glass-card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${tournament.image}') no-repeat center/cover;">
+              <div class="info-tournament">
+                <h2>${tournament.title}</h2>
+                <p>${tournament.game}</p>
+                <p>${tournament.description}</p>
+                <p>${tournament.location}</p>
+              </div>
           </article>
         `,
         )

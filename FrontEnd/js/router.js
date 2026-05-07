@@ -1,6 +1,6 @@
 import { AccueilPage } from "./pages/accueil.js";
 import { TournamentsPage } from "./pages/tournois.js";
-import { ReservationPage } from "./pages/reservation.js";
+import { PlanningPage } from "./pages/planning.js";
 import { ContactPage } from "./pages/contact.js";
 
 import { BASE_URL } from "./config.js";
@@ -8,7 +8,7 @@ import { BASE_URL } from "./config.js";
 const routes = {
   "/": AccueilPage,
   "/tournois": TournamentsPage,
-  "/reservation": ReservationPage,
+  "/planning": PlanningPage,
   "/contact": ContactPage,
 };
 
