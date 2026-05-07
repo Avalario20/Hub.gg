@@ -1,0 +1,57 @@
+import { API_URL, BASE_URL } from "../config.js";
+
+export function RegisterPage() {
+  const div = document.createElement("div");
+  div.className = "page Register-page";
+  div.innerHTML = `
+    <main class="register-main">
+      <h1>Créer un compte</h1>
+        <form class="register-form">
+            <input id="email" type="email" placeholder="Adresse e-mail" required>
+            <input id="username" type="text" placeholder="Nom d'utilisateur" required>
+            <input id="password" type="password" placeholder="Mot de passe" required>
+            <input id="password-confirm" type="password" placeholder="Confirmer mot de passe" required>
+            <button type="submit">S'inscrire</button>
+            <a href="${BASE_URL}/login" data-link>Déjà inscrit ? Se connecter</a>
+        </form>
+    </main>
+    `;
+
+  const form = div.querySelector(".register-form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const password = document.querySelector("#password").value;
+    const passwordConfirm = document.querySelector("#password-confirm").value;
+
+    // Vérifier que les mots de passe correspondent
+    if (password !== passwordConfirm) {
+      console.log("Erreur : Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    const response = await fetch(`${API_URL}/auth/register.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: document.querySelector("#email").value,
+        username: document.querySelector("#username").value,
+        password: password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      console.log("Compte créé :", data.user);
+      // Rediriger vers la page de connexion
+      window.location.href = `${BASE_URL}/login`;
+    } else {
+      console.log("Erreur :", data.message);
+    }
+  });
+
+  return div;
+}

@@ -2,6 +2,8 @@ import { AccueilPage } from "./pages/accueil.js";
 import { TournamentsPage } from "./pages/tournois.js";
 import { PlanningPage } from "./pages/planning.js";
 import { ContactPage } from "./pages/contact.js";
+import { LoginPage } from "./pages/login.js";
+import { RegisterPage } from "./pages/register.js";
 
 import { BASE_URL } from "./config.js";
 
@@ -10,6 +12,8 @@ const routes = {
   "/tournois": TournamentsPage,
   "/planning": PlanningPage,
   "/contact": ContactPage,
+  "/login": LoginPage,
+  "/register": RegisterPage,
 };
 
 export async function router() {
