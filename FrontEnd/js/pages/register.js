@@ -1,4 +1,6 @@
 import { API_URL, BASE_URL } from "../config.js";
+import { navigate } from "../router.js";
+import { register } from "../services/registerService.js";
 
 export function RegisterPage() {
   const div = document.createElement("div");
@@ -21,6 +23,8 @@ export function RegisterPage() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const email = document.querySelector("#email").value;
+    const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
     const passwordConfirm = document.querySelector("#password-confirm").value;
 
@@ -30,19 +34,7 @@ export function RegisterPage() {
       return;
     }
 
-    const response = await fetch(`${API_URL}/auth/register.php`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: document.querySelector("#email").value,
-        username: document.querySelector("#username").value,
-        password: password,
-      }),
-    });
-
-    const data = await response.json();
+    const data = await register(username, email, password);
 
     if (data.success) {
       console.log("Compte créé :", data.user);

@@ -1,5 +1,6 @@
 import { API_URL, BASE_URL } from "../config.js";
 import { navigate } from "../router.js";
+import { login } from "../services/loginService.js";
 
 export function LoginPage() {
   const div = document.createElement("div");
@@ -20,18 +21,10 @@ export function LoginPage() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${API_URL}/auth/login.php`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: document.querySelector("#username").value,
-        password: document.querySelector("#password").value,
-      }),
-    });
+    const username = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
 
-    const data = await response.json();
+    const data = await login(username, password);
 
     if (data.success) {
       switch (data.user.role) {
