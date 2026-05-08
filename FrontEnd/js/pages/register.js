@@ -7,10 +7,10 @@ export function RegisterPage() {
     <main class="register-main">
       <h1>Créer un compte</h1>
         <form class="register-form">
-            <input id="email" type="email" placeholder="Adresse e-mail" required>
-            <input id="username" type="text" placeholder="Nom d'utilisateur" required>
-            <input id="password" type="password" placeholder="Mot de passe" required>
-            <input id="password-confirm" type="password" placeholder="Confirmer mot de passe" required>
+            <input id="email" type="email" placeholder="Adresse e-mail" autocomplete="email" required>
+            <input id="username" type="text" placeholder="Nom d'utilisateur" autocomplete="username" required>
+            <input id="password" type="password" placeholder="Mot de passe" autocomplete="new-password" required>
+            <input id="password-confirm" type="password" placeholder="Confirmer mot de passe" autocomplete="new-password" required>
             <button type="submit">S'inscrire</button>
             <a href="${BASE_URL}/login" data-link>Déjà inscrit ? Se connecter</a>
         </form>

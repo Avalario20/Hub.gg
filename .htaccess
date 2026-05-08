@@ -12,6 +12,10 @@ RewriteRule ^BackEnd/ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Réécrire tout vers FrontEnd/index.html
+# Ignore index.php
 
-RewriteRule . FrontEnd/index.html [L]
+RewriteCond %{REQUEST_URI} !index\.php$
+
+# Réécrire tout vers FrontEnd/index.php
+
+RewriteRule . FrontEnd/index.php [L]
