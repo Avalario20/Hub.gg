@@ -4,7 +4,7 @@ import { login } from "../services/loginService.js";
 
 export function LoginPage() {
   const div = document.createElement("div");
-  div.className = "page Login-page";
+  div.className = "login-page";
   div.innerHTML = `
     <main class="login-main">
       <h1>Connexion</h1>

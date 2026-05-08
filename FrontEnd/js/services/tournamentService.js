@@ -11,3 +11,15 @@ export async function getTournaments() {
 
   return result.data;
 }
+
+export async function getLastTournaments() {
+  const response = await fetch(`${API_URL}/tournaments/getLast.php`);
+
+  if (!response.ok) {
+    throw new Error("Erreur récupération derniers tournois");
+  }
+
+  const result = await response.json();
+
+  return result.data;
+}

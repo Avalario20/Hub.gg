@@ -1,8 +1,12 @@
-.tournois-container {
+.tournois-container,
+.event-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+}
+.event-container {
+  margin-top: 200px;
 }
 .glass-card {
   display: flex;
