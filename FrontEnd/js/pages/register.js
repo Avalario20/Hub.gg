@@ -1,20 +1,21 @@
 import { API_URL, BASE_URL } from "../config.js";
 import { navigate } from "../router.js";
-import { register } from "../services/registerService.js";
+import { register } from "../services/authService.js";
 
 export function RegisterPage() {
   const div = document.createElement("div");
-  div.className = "page Register-page";
+  div.className = "register-page";
   div.innerHTML = `
     <main class="register-main">
       <h1>Créer un compte</h1>
         <form class="register-form">
+        <p id="login-message" class="login-message"></p>
             <input id="email" type="email" placeholder="Adresse e-mail" autocomplete="email" required>
             <input id="username" type="text" placeholder="Nom d'utilisateur" autocomplete="username" required>
             <input id="password" type="password" placeholder="Mot de passe" autocomplete="new-password" required>
             <input id="password-confirm" type="password" placeholder="Confirmer mot de passe" autocomplete="new-password" required>
             <button type="submit">S'inscrire</button>
-            <a href="${BASE_URL}/login" data-link>Déjà inscrit ? Se connecter</a>
+            <p>Déjà inscrit ? <a href="${BASE_URL}/login" data-link>Se connecter</a></p>
         </form>
     </main>
     `;
@@ -28,8 +29,11 @@ export function RegisterPage() {
     const password = document.querySelector("#password").value;
     const passwordConfirm = document.querySelector("#password-confirm").value;
 
-    // Vérifier que les mots de passe correspondent
     if (password !== passwordConfirm) {
+      const messageElement = document.querySelector("#login-message");
+      messageElement.textContent = "Les mots de passe ne correspondent pas";
+      messageElement.style.color = "red";
+      messageElement.className = "error-message";
       console.log("Erreur : Les mots de passe ne correspondent pas");
       return;
     }
@@ -38,9 +42,13 @@ export function RegisterPage() {
 
     if (data.success) {
       console.log("Compte créé :", data.user);
-      // Rediriger vers la page de connexion
+
       window.location.href = `${BASE_URL}/login`;
     } else {
+      const messageElement = document.querySelector("#login-message");
+      messageElement.textContent = data.message;
+      messageElement.style.color = "red";
+      messageElement.className = "error-message";
       console.log("Erreur :", data.message);
     }
   });

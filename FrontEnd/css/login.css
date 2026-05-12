@@ -1,13 +1,21 @@
-.login-page {
+.login-page,
+.register-page {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.login-main {
+.login-main h1,
+.register-main h1 {
+  margin-top: 41px;
+  color: var(--textcolor);
+}
+.login-main,
+.register-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
 
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
@@ -20,9 +28,52 @@
 
   width: 400px;
 }
-.login-form {
+.login-form,
+.register-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  padding: 40px;
+  padding: 0px 40px 40px 40px;
+}
+.login-form input,
+.register-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 225px;
+}
+.login-form p,
+.register-form p {
+  padding: 0%;
+  margin: 0%;
+}
+.login-form button,
+.register-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #7a46d1;
+  color: var(--textcolor);
+  cursor: pointer;
+  width: 245px;
+}
+.login-form button:hover,
+.register-form button:hover {
+  background-color: var(--primarycolor);
+  color: white;
+}
+.login-form p,
+.register-form p {
+  color: var(--textcolor);
+  font-size: 14px;
+}
+.login-form a,
+.register-form a {
+  color: #7a46d1;
+  text-decoration: none;
+}
+.login-form a:hover,
+.register-form a:hover {
+  color: var(--primarycolor);
 }

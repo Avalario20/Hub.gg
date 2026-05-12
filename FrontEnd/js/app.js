@@ -1,5 +1,6 @@
 import { navigate, router } from "./router.js";
 import { BASE_URL } from "./config.js";
+import { logout } from "./services/authService.js";
 
 // Génère automatiquement les href de la navbar HTML
 document.querySelectorAll("[data-route]").forEach((link) => {
@@ -22,6 +23,18 @@ document.addEventListener("click", (e) => {
 
   const href = link.getAttribute("href");
   navigate(href);
+});
+
+// Gère le bouton déconnexion
+document.addEventListener("click", async (e) => {
+  if (e.target.id === "logout-btn") {
+    e.preventDefault();
+    const data = await logout();
+    if (data.success) {
+      navigate(`${BASE_URL}/`);
+      location.reload();
+    }
+  }
 });
 
 // Bouton retour / précédent du navigateur

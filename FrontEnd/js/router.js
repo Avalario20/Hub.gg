@@ -4,8 +4,9 @@ import { PlanningPage } from "./pages/planning.js";
 import { ContactPage } from "./pages/contact.js";
 import { LoginPage } from "./pages/login.js";
 import { RegisterPage } from "./pages/register.js";
-import { DashboardPage } from "./pages/dashbord.js";
+import { DashboardPage } from "./pages/dashboard.js";
 
+import { getCurrentUser } from "./services/authService.js";
 import { BASE_URL } from "./config.js";
 
 const routes = {

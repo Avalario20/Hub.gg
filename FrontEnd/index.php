@@ -11,6 +11,7 @@ session_start();
     <link rel="stylesheet" href="./css/homePage.css" />
     <link rel="stylesheet" href="./css/tournaments.css" />
     <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
     <script type="module" src="./js/app.js" defer></script>
   </head>
   <body>
@@ -29,7 +30,7 @@ session_start();
         <a data-route="contact" data-link>Contact</a>
         <?php if (isset($_SESSION["user"])): ?>
           <a data-route="profile" data-link>Profil</a>
-          <a href="./api/auth/logout.php">Déconnexion</a>
+          <button id="logout-btn" class="logout-btn">Déconnexion</button>
         <?php else: ?>
           <a data-route="login" data-link>Connexion</a>
         <?php endif; ?>

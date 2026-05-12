@@ -1,5 +1,5 @@
 <?php
-session_start();
+require "session.php";
 
 header("Content-Type: application/json");
 
@@ -24,6 +24,7 @@ $stmt = $pdo->prepare("SELECT id, username, email, password, role FROM users WHE
 $stmt->execute([$username]);
 
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 if (!$user) {
     http_response_code(401);
