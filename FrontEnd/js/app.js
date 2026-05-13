@@ -4,7 +4,16 @@ import { logout } from "./services/authService.js";
 import { renderHeader } from "./componants/header.js";
 import { renderFooter } from "./componants/footer.js";
 
-// Fonction pour mettre à jour les éléments dynamiques
+// Màj les hrefs des liens
+function updateNavigation() {
+  document.querySelectorAll("[data-route]").forEach((link) => {
+    const route = link.dataset.route;
+
+    link.href = route === "home" ? `${BASE_URL}/` : `${BASE_URL}/${route}`;
+  });
+}
+
+// Màj le header et le footer
 export async function updateDynamicElements() {
   const headerContainer = document.querySelector("#header");
   const footerContainer = document.querySelector("#footer");
@@ -22,54 +31,49 @@ export async function updateDynamicElements() {
   updateNavigation();
 }
 
-// Rend la fonction accessible globalement
 window.updateDynamicElements = updateDynamicElements;
 
-// Fonction de navigation personnalisée
+// Navigation SPA sans rechargement complet
 async function navigate(path) {
   history.pushState({}, "", path);
+
   await router();
-  await updateDynamicElements();
+
+  // Màj les liens après changement de page
+  updateNavigation();
 }
 
-// Met à jour les hrefs des liens
-function updateNavigation() {
-  document.querySelectorAll("[data-route]").forEach((link) => {
-    const route = link.dataset.route;
-
-    if (route === "home") {
-      link.href = `${BASE_URL}/`;
-    } else {
-      link.href = `${BASE_URL}/${route}`;
-    }
-  });
-}
-
-// Gère les clics sur les liens et le logout
+// Gestion des clics de navigation
 document.addEventListener("click", async (e) => {
   const link = e.target.closest("[data-link]");
 
   if (link) {
     e.preventDefault();
-    const href = link.getAttribute("href");
+
+    const href = link.href;
     await navigate(href);
+
     return;
   }
 
   if (e.target.id === "logout-btn") {
     e.preventDefault();
+
     const data = await logout();
+
     if (data.success) {
       await navigate(`${BASE_URL}/`);
-      location.reload();
+
+      // On met à jour le header après déconnexion
+      await updateDynamicElements();
     }
   }
 });
 
-// Bouton retour / précédent du navigateur
+// Bouton précédent/suivant du navigateur
 window.addEventListener("popstate", async () => {
   await router();
-  await updateDynamicElements();
+  updateNavigation();
 });
 
 // Premier chargement
