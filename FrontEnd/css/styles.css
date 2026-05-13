@@ -13,29 +13,37 @@ body {
     /* radial-gradient(circle at top right, #8e56ff, transparent 35%),
     /* radial-gradient(circle at bottom left, #06b6d4, transparent 20%), */
     radial-gradient(
-      ellipse 200% 60% at bottom,
+      ellipse 200% 70% at bottom,
       var(--primarycolor),
       transparent 35%
     ),
+    /* radial-gradient(ellipse 126% 20% at 50% 91%, #95d5ff60, transparent 30%), */
     var(--backgroundcolor);
 }
-header {
-  position: sticky;
+
+.header-container {
+  /* position: sticky; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-right: 25px;
   padding: 0px 200px;
-  top: 0;
-  z-index: 1000;
+  /* top: 0;
+  z-index: 1000; */
 }
 #logo {
   width: 180px;
 }
-nav {
+.header-container nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  position: fixed;
+  top: 10%;
+  right: 0px;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
@@ -46,13 +54,13 @@ nav {
 
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
-header a {
+.header-container a {
   color: var(--textcolor);
   text-decoration: none;
   font-size: 18px;
   padding: 20px 20px;
 }
-header a:hover {
+.header-container a:hover {
   transition: 0.5s;
   color: #ffffff;
   cursor: pointer;
@@ -70,4 +78,48 @@ header a:hover {
 }
 .logout-btn:hover {
   color: #ffffff;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 200px 200px 20px 200px;
+}
+
+.footer-container nav {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.footer-container a {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(142, 86, 255, 0.1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  font-size: 26px;
+  padding: 15px;
+}
+
+.footer-container a:hover {
+  transition: 0.5s;
+  cursor: pointer;
+}
+/* footer a::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s;
+} */
+
+.footer-container #logo {
+  width: 250px;
 }

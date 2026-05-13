@@ -5,18 +5,20 @@ import {
 } from "../services/tournamentService.js";
 import { getCurrentUser } from "../services/authService.js";
 import { BASE_URL } from "../config.js";
-import { navigate } from "../router.js";
-
-const currentUser = await getCurrentUser();
-
-if (
-  !currentUser ||
-  (currentUser.role !== "admin" && currentUser.role !== "editor")
-) {
-  // navigate(`${BASE_URL}/`);
-}
 
 export async function DashboardPage() {
+  const currentUser = await getCurrentUser();
+
+  // Vérifier les droits d'accès
+  if (
+    !currentUser?.user ||
+    (currentUser.user.role !== "admin" && currentUser.user.role !== "editor")
+  ) {
+    // Rediriger vers l'accueil
+    window.location.href = `${BASE_URL}/`;
+    return document.createElement("div");
+  }
+
   let tournaments = await getTournaments();
   let selectedTournament = null;
   let isEditing = false;

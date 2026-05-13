@@ -1,10 +1,12 @@
-.accueil-main {
+.accueil-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.accueil-container {
+.accueil-img {
   background-image: url(../assets/images/Winter_2004_DreamHack_LAN_Party.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 1440px;
   height: 668px;
   border-radius: 20px;
@@ -30,4 +32,39 @@
     transparent
   );
   transform: skewX(-25deg);
+}
+.accueil-container a {
+  margin-top: 100px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 20px 20px;
+
+  background:
+    radial-gradient(circle at center, #acacac15, transparent 70%),
+    rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  /* Transition ici */
+  transition:
+    background 0.8s ease,
+    transform 0.8s ease;
+}
+
+.accueil-container a:hover {
+  color: #ffffff;
+  cursor: pointer;
+
+  background:
+    radial-gradient(circle at center, #acacac2c, transparent 80%),
+    rgba(255, 255, 255, 0.12);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }

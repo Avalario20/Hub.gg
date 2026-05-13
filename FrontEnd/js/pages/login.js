@@ -28,6 +28,12 @@ export function LoginPage() {
     const data = await login(username, password);
 
     if (data.success) {
+      // Attendre que la session soit vraiment persistée et que getCurrentUser retourne les bonnes données
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      // Mettre à jour le header avec les données fraîches
+      await window.updateDynamicElements();
+
       switch (data.user.role) {
         case "admin":
           navigate(`${BASE_URL}/dashboard`);
