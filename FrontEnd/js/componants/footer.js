@@ -6,7 +6,7 @@ export async function renderFooter() {
     <nav>
       <a data-route="home" data-link>Accueil</a>
       <a data-route="tournois" data-link>Tournois</a>
-      <a data-route="planning" data-link>Planning</a>
+      <a data-route="calendar" data-link>Calendrier</a>
       <a data-route="contact" data-link>Contact</a>
     </nav>
     <div class="logo">

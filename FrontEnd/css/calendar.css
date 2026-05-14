@@ -1,0 +1,195 @@
+/* Calendrier */
+.calendar-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.month-year {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: capitalize;
+  min-width: 200px;
+  text-align: center;
+}
+
+.calendar-btn {
+  background: linear-gradient(135deg, #667eea 0%, #8e56ff 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.calendar-btn:active {
+  transform: scale(0.95);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.day-header {
+  text-align: center;
+  font-weight: bold;
+  color: var(--primarycolor);
+  padding: 10px;
+  font-size: 14px;
+}
+
+.day-cell {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.day-cell:hover {
+  background: rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.day-cell.other-month {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.day-cell.other-month:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: none;
+  box-shadow: none;
+}
+
+.day-number {
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.day-cell.has-tournament {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.2),
+    rgba(118, 75, 162, 0.2)
+  );
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.tournament-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: linear-gradient(135deg, #667eea 0%, #8e56ff 100%);
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tournaments-list {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tournaments-list h3 {
+  color: var(--primarycolor);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.tournament-card {
+  background: rgba(102, 126, 234, 0.1);
+  border-left: 4px solid #667eea;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.tournament-card:hover {
+  background: rgba(102, 126, 234, 0.15);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.tournament-info h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.tournament-info p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.tournament-info strong {
+  color: var(--primarycolor);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calendar-grid {
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .day-cell {
+    min-height: 80px;
+    padding: 8px;
+  }
+
+  .month-year {
+    font-size: 20px;
+  }
+
+  .calendar-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  .tournaments-list {
+    padding: 20px;
+  }
+}

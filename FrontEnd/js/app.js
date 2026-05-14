@@ -50,8 +50,9 @@ document.addEventListener("click", async (e) => {
   if (link) {
     e.preventDefault();
 
-    const href = link.href;
-    await navigate(href);
+    const route = link.dataset.route;
+    const path = route === "home" ? "/" : `/${route}`;
+    await navigate(`${BASE_URL}${path}`);
 
     return;
   }

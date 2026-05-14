@@ -1,22 +1,19 @@
 :root {
   --backgroundcolor: #131313;
   --primarycolor: #8e56ff;
+  --secondarycolor: #667eea;
   --elementshade: rgba(255, 255, 255, 0.1);
   --textcolor: #acacac;
+  --font-jersey25: "jersey 25", sans-serif;
 }
 body {
   /* background-color: var(--backgroundcolor); */
   color: var(--textcolor);
-  font-family: "jersey 25", sans-serif;
+  font-family: var(--font-jersey25);
   min-height: 98.25vh;
   background:
-    /* radial-gradient(circle at top right, #8e56ff, transparent 35%),
-    /* radial-gradient(circle at bottom left, #06b6d4, transparent 20%), */
-    radial-gradient(
-      ellipse 200% 70% at bottom,
-      var(--primarycolor),
-      transparent 35%
-    ),
+    radial-gradient(ellipse 200% 30% at top, #8e56ffad, transparent 35%),
+    radial-gradient(ellipse 200% 70% at bottom, #8e56ffad, transparent 35%),
     /* radial-gradient(ellipse 126% 20% at 50% 91%, #95d5ff60, transparent 30%), */
     var(--backgroundcolor);
 }
@@ -57,7 +54,7 @@ body {
 .header-container a {
   color: var(--textcolor);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   padding: 20px 20px;
 }
 .header-container a:hover {

@@ -12,6 +12,12 @@ session_start();
     <link rel="stylesheet" href="./css/tournaments.css" />
     <link rel="stylesheet" href="./css/login.css" />
     <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/calendar.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+
     <script type="module" src="./js/app.js" defer></script>
   </head>
   <body>

@@ -16,7 +16,7 @@ export async function renderHeader() {
     <nav>
       <a data-route="home" data-link>Accueil</a>
       <a data-route="tournois" data-link>Tournois</a>
-      <a data-route="planning" data-link>Planning</a>
+      <a data-route="calendar" data-link>Calendrier</a>
       <a data-route="contact" data-link>Contact</a>
       ${
         user?.user?.id
