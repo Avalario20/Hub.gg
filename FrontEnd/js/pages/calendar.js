@@ -111,16 +111,30 @@ function createCalendar(tournaments) {
       });
 
       if (dayTournaments.length > 0) {
-        dayCell.classList.add("has-tournament");
-        const badge = document.createElement("div");
-        badge.className = "tournament-badge";
-        badge.textContent = dayTournaments.length;
-        dayCell.appendChild(badge);
+        if (dayTournaments.length > 0) {
+          dayCell.classList.add("has-tournament");
 
-        // Ajouter l'événement de clic
-        dayCell.addEventListener("click", () => {
-          displayTournaments(dayTournaments, tournamentsList);
-        });
+          const eventsWrapper = document.createElement("div");
+          eventsWrapper.className = "day-events";
+
+          dayTournaments.forEach((tournament) => {
+            const eventItem = document.createElement("div");
+            eventItem.className = "day-event";
+
+            eventItem.innerHTML = `
+              <span class="day-event-title">${tournament.title}</span>
+              <span class="day-event-game">${tournament.game}</span>
+            `;
+
+            eventsWrapper.appendChild(eventItem);
+          });
+
+          dayCell.appendChild(eventsWrapper);
+
+          dayCell.addEventListener("click", () => {
+            displayTournaments(dayTournaments, tournamentsList);
+          });
+        }
       }
 
       calendarGrid.appendChild(dayCell);

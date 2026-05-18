@@ -107,6 +107,17 @@
   );
   border-color: rgba(102, 126, 234, 0.3);
 }
+.day-event {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  cursor: pointer;
+  color: var(--secondarycolor);
+}
 
 .tournament-badge {
   position: absolute;
